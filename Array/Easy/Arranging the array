@@ -1,0 +1,44 @@
+/*
+You are given an array of size N. Rearrange the given array in-place such that all the negative numbers occur before positive numbers.(Maintain the order of all -ve and +ve numbers as given in the original array).
+ 
+
+Example 1:
+
+Input:
+N = 4
+Arr[] = {-3, 3, -2, 2}
+Output:
+-3 -2 3 2
+Explanation:
+In the given array, negative numbers
+are -3, -2 and positive numbers are 3, 2. 
+ 
+
+Example 2:
+
+Input:
+N = 5
+Arr[] = {2, -4, 7, -3, 4}
+Output:
+-4 -3 2 7 4
+*/
+
+
+void Rearrange(int arr[], int n)
+{
+    // Your code goes here
+    vector<int>ans1;
+    vector<int>ans2;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]<0)
+        ans1.push_back(arr[i]);
+        else
+        ans2.push_back(arr[i]);
+    }
+    int ci=0;
+    for( ;ci<ans1.size();ci++)
+    arr[ci]=ans1[ci];
+    for(;ci<ans2.size()+ans1.size();ci++)
+    arr[ci]=ans2[ci-ans1.size()];
+}
