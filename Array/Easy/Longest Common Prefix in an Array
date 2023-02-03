@@ -1,0 +1,57 @@
+/*
+Given a array of N strings, find the longest common prefix among all strings present in the array.
+
+
+Example 1:
+
+Input:
+N = 4
+arr[] = {geeksforgeeks, geeks, geek,
+         geezer}
+Output: gee
+Explanation: "gee" is the longest common
+prefix in all the given strings.
+Example 2:
+
+Input: 
+N = 2
+arr[] = {hello, world}
+Output: -1
+Explanation: There's no common prefix
+in the given strings.
+*/
+
+
+class Solution{
+  public:
+    
+    string longestCommonPrefix (string arr[], int N)
+    {
+        // your code here
+        string str=arr[0];
+        int maxlength=0;
+        int checker=1;
+        for(int j=0;j<str.length();j++)
+        {
+            
+            for(int i=1;i<N;i++)
+            {
+                if(str[j]!=arr[i][j])
+                {
+                    checker=0;
+                    break;
+                }
+                
+            }
+            if(!checker)
+            break;
+            else
+            maxlength++;
+        }
+       // cout<<maxlength<<" "<<checker;
+       if(maxlength)
+        return str.substr(0,maxlength);
+        else
+        return "-1";
+    }
+};
